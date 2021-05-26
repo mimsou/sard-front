@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import AuthService from "services/auth.service"
+import AuthService from "services/auth.service";
 
-import { useInput }  from "hooks/inputHook"
-
+import { useInput } from "hooks/inputHook";
 
 import {
   Button,
@@ -21,31 +20,44 @@ import {
 } from "reactstrap";
 
 const Login = (props) => {
+  const { value: login, bind: bindLogin, reset: resetLogin } = useInput("");
+  const {
+    value: password,
+    bind: bindPassword,
+    reset: resetPassword,
+  } = useInput("");
 
-  const { value:login, bind:bindLogin, reset:resetLogin } = useInput('');
-  const { value:password, bind:bindPassword, reset:resetPassword } = useInput('');
-
-  const handleLogin = (e)  => {
-
+  const handleLogin = (e) => {
     e.preventDefault();
 
-      AuthService.login(login, password).then(
-        () => {
-          props.history.push("/admin/index");
-          window.location.reload();
-        },
-        error => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
- 
+    AuthService.login(login, password).then(
+      () => {
+        if (AuthService.isLoggedIn()) {
+    
+          if(AuthService.isAdmin()){
+
+            props.history.push("/admin/index");
+            window.location.reload();
+
+          }else{
+
+            props.history.push("/front/index");
+            window.location.reload();
+            
+          }
+         
         }
-      );
-     
-  }
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+      }
+    );
+  };
 
   return (
     <>
@@ -60,7 +72,7 @@ const Login = (props) => {
             <div className="text-center text-muted mb-4">
               <small>Connection</small>
             </div>
-            <Form  onSubmit={handleLogin} role="form">
+            <Form onSubmit={handleLogin} role="form">
               <FormGroup className="mb-3">
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
@@ -68,12 +80,7 @@ const Login = (props) => {
                       <i className="ni ni-email-83" />
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input
-                    {...bindLogin}
-                    placeholder="Login"
-                    type="text"
-                    
-                  />
+                  <Input {...bindLogin} placeholder="Login" type="text" />
                 </InputGroup>
               </FormGroup>
               <FormGroup>

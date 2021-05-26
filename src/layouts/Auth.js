@@ -6,6 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 // core components
 import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import AuthFooter from "components/Footers/AuthFooter.js";
+import AuthService from "../services/auth.service"
 
 import routes from "routes.js";
 
@@ -28,7 +29,7 @@ const Auth = (props) => {
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/auth") {
+      if (prop.layout === "/auth" && !AuthService.isLoggedIn()) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -80,7 +81,7 @@ const Auth = (props) => {
           <Row className="justify-content-center">
             <Switch>
               {getRoutes(routes)}
-              <Redirect from="*" to="/auth/login" />
+              <Redirect from="*" to="/admin/index" />
             </Switch>
           </Row>
         </Container>

@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useState, useContext } from "react";
- 
+import jwt from "jwt-decode";
 
-const API_URL = "http://127.0.0.1/SARD/backend/public/api/";
+const API_URL = "http://dev.sard.loc/api/";
 
 class AuthService {
-
   isLoggedIn() {
     if (localStorage.getItem("user")) {
       return true;
@@ -14,19 +13,26 @@ class AuthService {
     }
   }
 
-  login(login, password) {
+  isAdmin() {
+    const jwt = this.decodeJwt();
+    return jwt.roles.includes("ROLE_ADMIN");
+  }
 
+  decodeJwt() {
+    return  jwt(JSON.parse(localStorage.getItem("user")).token);
+  }
+
+  login(login, password) {
     var formData = new FormData();
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     formData.append("login", login);
-    
+
     formData.append("password", password);
 
     return axios.post(API_URL + "login", formData, config).then((response) => {
       if (response.data.token) {
-        
         localStorage.setItem("user", JSON.stringify(response.data));
       }
 
@@ -46,9 +52,7 @@ class AuthService {
     });
   }
 
-  getCurrentUser() {
-    return JSON.parse(localStorage.getItem("user"));
-  }
+  getCurrentUser() {}
 }
 
 export default new AuthService();

@@ -1,4 +1,4 @@
- import Index from "views/Index.js";
+ import AdminIndex from "views/admin-pages/Index.js"; 
 import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
@@ -18,7 +18,7 @@ var routes = [
     path: "/index",
     name: "Page principale",
     icon: "ni ni-tv-2 text-primary",
-    component: Index,
+    component: AdminIndex,
     layout: "/admin",
   },
   {
