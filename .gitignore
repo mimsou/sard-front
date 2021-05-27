@@ -9,4 +9,4 @@ run.bat
 codes.bat
 /src - Copie
 /sard-code-snippets
-/services/auth-config.js
+/src/services/auth-config.js

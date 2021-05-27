@@ -2,7 +2,9 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import jwt from "jwt-decode";
 
-const API_URL = "http://dev.sard.loc/api/";
+import getApiUrl from './auth-config';
+const API_URL = getApiUrl();
+
 
 class AuthService {
   isLoggedIn() {

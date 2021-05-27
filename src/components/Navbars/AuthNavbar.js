@@ -1,5 +1,5 @@
  
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth.service"
 // reactstrap components
@@ -15,7 +15,10 @@ import {
   Col,
 } from "reactstrap";
 
+
+
 const AdminNavbar = () => {
+  const [user, setUser] = useState([]);
   return (
     <>
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
