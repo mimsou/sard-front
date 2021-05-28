@@ -6,7 +6,7 @@ import Chart from "chart.js";
 
 import { Line, Bar } from "react-chartjs-2";
 
-import  AuthService from "../../services/auth.service" 
+import AuthService from "../../services/auth.service";
 
 import {
   Button,
@@ -30,17 +30,13 @@ import {
   chartExample2,
 } from "variables/charts.js";
 
-import AdminHeader from "components/Headers/AdminHeader.js"; 
+import AdminHeader from "components/Headers/AdminHeader.js";
 
 const getUser = () => {
   AuthService.getCurrentUser();
-  console.log("ok")
-}
+};
 
-const Index = (props) => {
-
-  
-
+const User = (props) => {
   return (
     <>
       <AdminHeader />
@@ -48,14 +44,19 @@ const Index = (props) => {
         <Row>
           <Col>
             <Card>
-              <CardHeader>Accueil</CardHeader>
-              <Button onClick={()=>{getUser()}} > getCurrentUser </Button>
+              <CardHeader>Utilisateurs</CardHeader>
+              <Button
+                onClick={() => {
+                  getUser();
+                }}
+              >
+                {" "}
+                getCurrentUser{" "}
+              </Button>
               <CardBody>
-<br></br>
-<br></br>
-<br></br>
-
-
+                <br></br>
+                <br></br>
+                <br></br>
               </CardBody>
             </Card>
           </Col>

@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth.service"
-// reactstrap components
+import User from "../../services/user.service"
+ 
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -15,10 +16,12 @@ import {
   Col,
 } from "reactstrap";
 
-
+//const user = User.getUser()
 
 const AdminNavbar = () => {
-  const [user, setUser] = useState([]);
+
+   
+
   return (
     <>
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">

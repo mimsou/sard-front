@@ -54,7 +54,7 @@ const Auth = (props) => {
                 <Col lg="5" md="6">
                   <h1 className="text-white">Bonjour!</h1>
                   <p className="text-lead text-light">
-                   Bienvenu dans l'espace privé de S.A.R.D
+                   Bienvenu dans l'espace d'authentification du S.A.R.D
                   </p>
                 </Col>
               </Row>

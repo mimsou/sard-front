@@ -25,6 +25,7 @@ class AuthService {
   }
 
   login(login, password) {
+
     var formData = new FormData();
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
@@ -40,18 +41,24 @@ class AuthService {
 
       return response.data;
     });
+    
   }
 
   logout() {
     localStorage.removeItem("user");
   }
 
-  register(username, email, password) {
-    return axios.post(API_URL + "signup", {
-      username,
-      email,
-      password,
-    });
+  registration(name, login, email, password) {
+
+    const user = {
+      "login": login,
+      "password": password,
+      "email": email,
+      "name": name
+    }
+
+    return axios.post(API_URL + "users",  user);
+
   }
 
   getCurrentUser() {}

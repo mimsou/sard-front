@@ -20,9 +20,9 @@ import {
   Col,
 } from "reactstrap";
 
-import Header from "components/Headers/Header.js";
+import FrontHeader from "components/Headers/FrontHeader.js";
 
-const FrontPage = (props) => {
+const FrontIndex = (props) => {
   return (
     <>
       <Container fluid>
@@ -46,4 +46,4 @@ const FrontPage = (props) => {
   );
 };
 
-export default FrontPage;
+export default FrontIndex;

@@ -4,6 +4,8 @@ import AuthService from "services/auth.service";
 
 import { useInput } from "hooks/inputHook";
 
+import { useHistory } from "react-router-dom";
+
 import {
   Button,
   Card,
@@ -20,13 +22,15 @@ import {
 } from "reactstrap";
 
 const Login = (props) => {
-  const { value: login, bind: bindLogin, reset: resetLogin } = useInput("");
   
-  const {
-    value: password,
-    bind: bindPassword,
-    reset: resetPassword,
-  } = useInput("");
+  let history = useHistory();
+
+  const getToRegistration = () => {
+    history.push("/auth/registration");
+  };
+
+  const { value: login, bind: bindLogin, reset: resetLogin } = useInput("");
+  const { value: password, bind: bindPassword, reset: resetPassword,} = useInput("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -34,19 +38,13 @@ const Login = (props) => {
     AuthService.login(login, password).then(
       () => {
         if (AuthService.isLoggedIn()) {
-    
-          if(AuthService.isAdmin()){
-
+          if (AuthService.isAdmin()) {
             props.history.push("/admin/index");
             window.location.reload();
-
-          }else{
-
+          } else {
             props.history.push("/front/index");
             window.location.reload();
-            
           }
-         
         }
       },
       (error) => {
@@ -134,7 +132,10 @@ const Login = (props) => {
             <a
               className="text-light"
               href="#pablo"
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.preventDefault();
+                getToRegistration();
+              }}
             >
               <small>Create new account</small>
             </a>

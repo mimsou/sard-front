@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import  AuthService  from "../../services/auth.service"
- 
+import AuthService from "../../services/auth.service";
+import User from "../../services/user.service";
+
 import {
   DropdownMenu,
   DropdownItem,
@@ -20,21 +21,29 @@ import {
 } from "reactstrap";
 
 const AdminNavbar = (props) => {
+  
+  const user = User.getUser();
 
-   const logout = (e) => {
+  const logout = (e) => {
     AuthService.logout();
-   }
+  };
 
   return (
     <>
+    
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
+
         <Container fluid>
+
           <Link
             className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
             to="/"
           >
             {props.brandText}
           </Link>
+
+
+
           <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <FormGroup className="mb-0">
               <InputGroup className="input-group-alternative">
@@ -47,35 +56,43 @@ const AdminNavbar = (props) => {
               </InputGroup>
             </FormGroup>
           </Form>
+
+
           <Nav className="align-items-center d-none d-md-flex" navbar>
+
             <UncontrolledDropdown nav>
+
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
                     <img
                       alt="..."
-                      src={
-                        require("../../assets/img/theme/team-4-800x800.jpg")
-                          .default
-                      }
+                      src={user.photosrc} 
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">
-                      Jessica Jones
+                      {user.name}
                     </span>
                   </Media>
                 </Media>
               </DropdownToggle>
+
+
               <DropdownMenu className="dropdown-menu-arrow" right>
-                
-                <DropdownItem href="#pablo" onClick={(e) => logout() }>
+                <DropdownItem href="#pablo" onClick={(e) => logout()}>
                   <i className="ni ni-user-run" />
                   <span>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
+
             </UncontrolledDropdown>
+
+
+
           </Nav>
+
+
         </Container>
       </Navbar>
     </>

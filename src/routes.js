@@ -1,52 +1,20 @@
  import AdminIndex from "views/admin-pages/Index.js"; 
-import Profile from "views/examples/Profile.js";
-import Maps from "views/examples/Maps.js";
-import Register from "views/examples/Register.js";
-import Login from "views/Login.js";
-import Tables from "views/examples/Tables.js";
-import Icons from "views/examples/Icons.js";
-import FrontPage from "views/front-views/front-page.js";
+import Login from "views/auth-pages/Login.js";
+import Register from "views/auth-pages/Register";
+import FrontIndex from "views/front-pages/Index.js";
 
 var routes = [
   {
     path: "/index",
-    name: "Page principale",
+    name: "Fronts",
     icon: "ni ni-tv-2 text-primary",
-    component: FrontPage,
+    component: FrontIndex,
     layout: "/front",
   },  {
     path: "/index",
-    name: "Page principale",
+    name: "Admin",
     icon: "ni ni-tv-2 text-primary",
     component: AdminIndex,
-    layout: "/admin",
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-blue",
-    component: Icons,
-    layout: "/admin",
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    component: Maps,
-    layout: "/admin",
-  },
-  {
-    path: "/user-profile",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
-    component: Profile,
-    layout: "/admin",
-  },
-  {
-    path: "/tables",
-    name: "Tables",
-    icon: "ni ni-bullet-list-67 text-red",
-    component: Tables,
     layout: "/admin",
   },
   {
@@ -57,11 +25,12 @@ var routes = [
     layout: "/auth",
   },
   {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
+    path: "/registration",
+    name: "Inscription",
+    icon: "ni ni-key-25 text-info",
     component: Register,
     layout: "/auth",
   },
+  
 ];
 export default routes;
