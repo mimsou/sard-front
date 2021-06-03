@@ -1,4 +1,4 @@
- import AdminIndex from "views/admin-pages/Index.js"; 
+import AdminIndex from "views/admin-pages/Index.js"; 
 import Login from "views/auth-pages/Login.js";
 import Register from "views/auth-pages/Register";
 import FrontIndex from "views/front-pages/Index.js";
@@ -12,7 +12,7 @@ var routes = [
     layout: "/front",
   },  {
     path: "/index",
-    name: "Admin",
+    name: "Accueil",
     icon: "ni ni-tv-2 text-primary",
     component: AdminIndex,
     layout: "/admin",

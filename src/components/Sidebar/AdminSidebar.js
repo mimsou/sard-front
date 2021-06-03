@@ -35,9 +35,6 @@ import {
 var ps;
 
 const Sidebar = (props) => {
-
-  console.log(props);
-  
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName) => {
@@ -54,19 +51,21 @@ const Sidebar = (props) => {
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
-      return (
-        <NavItem key={key}>
-          <NavLink
-            to={prop.layout + prop.path}
-            tag={NavLinkRRD}
-            onClick={closeCollapse}
-            activeClassName="active"
-          >
-            <i className={prop.icon} />
-            {prop.name}
-          </NavLink>
-        </NavItem>
-      );
+      if (prop.layout == "/admin") {
+        return (
+          <NavItem key={key}>
+            <NavLink
+              to={prop.layout + prop.path}
+              tag={NavLinkRRD}
+              onClick={closeCollapse}
+              activeClassName="active"
+            >
+              <i className={prop.icon} />
+              {prop.name}
+            </NavLink>
+          </NavItem>
+        );
+      }
     });
   };
 
@@ -85,19 +84,12 @@ const Sidebar = (props) => {
   }
 
   return (
-
     <Navbar
       className="navbar-vertical fixed-left navbar-light bg-white"
       expand="md"
       id="sidenav-main"
     >
-
-      
       <Container fluid>
-      
-
-
-
         <button
           className="navbar-toggler"
           type="button"
@@ -106,10 +98,6 @@ const Sidebar = (props) => {
           <span className="navbar-toggler-icon" />
         </button>
 
-
-
-
-    
         {logo ? (
           <NavbarBrand className="pt-0" {...navbarBrandProps}>
             <img
@@ -119,13 +107,8 @@ const Sidebar = (props) => {
             />
           </NavbarBrand>
         ) : null}
-       
-
-
 
         <Nav className="align-items-center d-md-none">
-
-
           <UncontrolledDropdown nav>
             <DropdownToggle nav className="nav-link-icon">
               <i className="ni ni-bell-55" />
@@ -142,8 +125,6 @@ const Sidebar = (props) => {
             </DropdownMenu>
           </UncontrolledDropdown>
 
-
-
           <UncontrolledDropdown nav>
             <DropdownToggle nav>
               <Media className="align-items-center">
@@ -158,7 +139,6 @@ const Sidebar = (props) => {
                 </span>
               </Media>
             </DropdownToggle>
-
 
             <DropdownMenu className="dropdown-menu-arrow" right>
               <DropdownItem className="noti-title" header tag="div">
@@ -186,20 +166,12 @@ const Sidebar = (props) => {
                 <span>Logout</span>
               </DropdownItem>
             </DropdownMenu>
-
-
           </UncontrolledDropdown>
-
-
         </Nav>
- 
+
         <Collapse navbar isOpen={collapseOpen}>
-     
           <div className="navbar-collapse-header d-md-none">
             <Row>
-
-
-
               {logo ? (
                 <Col className="collapse-brand" xs="6">
                   {logo.innerLink ? (
@@ -214,9 +186,6 @@ const Sidebar = (props) => {
                 </Col>
               ) : null}
 
-
-
-
               <Col className="collapse-close" xs="6">
                 <button
                   className="navbar-toggler"
@@ -227,15 +196,9 @@ const Sidebar = (props) => {
                   <span />
                 </button>
               </Col>
-
-
-
-
             </Row>
           </div>
 
-
-   
           <Form className="mt-4 mb-3 d-md-none">
             <InputGroup className="input-group-rounded input-group-merge">
               <Input
@@ -252,34 +215,18 @@ const Sidebar = (props) => {
             </InputGroup>
           </Form>
 
-
-
-
           <Nav navbar>{createLinks(routes)}</Nav>
 
-
-
-     
           <hr className="my-3" />
- 
-    
-
-
-
-
-
-
 
           <Nav className="mb-md-3" navbar>
             <NavItem className="active-pro active">
               <NavLink href="/front/index">
                 <i className="ni ni-spaceship" />
-               Application
+                Application
               </NavLink>
             </NavItem>
           </Nav>
-
-
         </Collapse>
       </Container>
     </Navbar>

@@ -8,6 +8,7 @@ const API_URL = getApiUrl();
 
 class AuthService {
   isLoggedIn() {
+    console.log("loged",localStorage.getItem("user"))
     if (localStorage.getItem("user")) {
       return true;
     } else {
@@ -38,7 +39,6 @@ class AuthService {
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
-
       return response.data;
     });
     

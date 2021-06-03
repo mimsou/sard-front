@@ -8,8 +8,12 @@ import "assets/scss/argon-dashboard-react.scss";
 import FrontLayout from "layouts/Front.js";
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
+import { theme } from './theming/theme.ts';
+import { ThemeProvider } from "@lifeomic/chroma-react/styles";
+
 
 ReactDOM.render(
+<ThemeProvider theme={theme}>
   <BrowserRouter>
     <Switch>
       <Route path="/front" render={(props) => <FrontLayout {...props} />} />
@@ -17,6 +21,8 @@ ReactDOM.render(
       <Route path="/auth" render={(props) =>  <AuthLayout  {...props} />} />
       <Redirect from="/" to="/auth/login" />
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </ThemeProvider>
+  ,
   document.getElementById("root")
 );

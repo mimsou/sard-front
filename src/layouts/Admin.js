@@ -1,9 +1,7 @@
 
 import React from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
- 
 import { Container } from "reactstrap";
- 
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import AdminFooter from "components/Footers/AdminFooter.js";
 import Sidebar from "components/Sidebar/AdminSidebar.js";
@@ -27,6 +25,7 @@ const Admin = (props) => {
         return (
           <Route
             path={prop.layout + prop.path}
+            routes={routes}
             component={prop.component}
             key={key}
           />
