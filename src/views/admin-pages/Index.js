@@ -59,8 +59,9 @@ const Index = (props) => {
         <Row>
           <Col md="8" style={{ margin: "auto" }}>
             <Row>
-              <Col>
-                <Permit>
+              {" "}
+              <Permit perm={"ROLE_ADMIN.manageUser"}>
+                <Col>
                   <IconTile onClick={() => console.log("clicked")}>
                     <IconTileHero backgroundUrl={bg} />
                     <IconTileBadge icon={Users} />
@@ -69,8 +70,8 @@ const Index = (props) => {
                       caption="gérer les utilisateur"
                     />
                   </IconTile>
-                </Permit>
-              </Col>
+                </Col>
+              </Permit>
               <Col>
                 <IconTile onClick={() => console.log("clicked")}>
                   <IconTileHero backgroundUrl={bg} />
