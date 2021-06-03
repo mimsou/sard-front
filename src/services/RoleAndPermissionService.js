@@ -11,7 +11,7 @@ class RoleAndPermission {
   getUserRoles = () => {
 
     return {
-      ROLE_ADMIN: ["manageUser", "manageRapport"],
+      ROLE_ADMIN: ["", "manageUser"],
     };
 
   };
