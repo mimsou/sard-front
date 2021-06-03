@@ -14,6 +14,8 @@ import bg from "../../assets/img/theme/bg.png";
 
 import routes from "routes.js";
 
+import Permit from "../../permission/PermitComponent";
+
 import {
   IconTile,
   IconTileBadge,
@@ -58,14 +60,16 @@ const Index = (props) => {
           <Col md="8" style={{ margin: "auto" }}>
             <Row>
               <Col>
-                <IconTile onClick={() => console.log("clicked")}>
-                  <IconTileHero backgroundUrl={bg} />
-                  <IconTileBadge icon={Users} />
-                  <IconTileContent
-                    text="Utilisateurs"
-                    caption="gérer les utilisateur"
-                  />
-                </IconTile>
+                <Permit>
+                  <IconTile onClick={() => console.log("clicked")}>
+                    <IconTileHero backgroundUrl={bg} />
+                    <IconTileBadge icon={Users} />
+                    <IconTileContent
+                      text="Utilisateurs"
+                      caption="gérer les utilisateur"
+                    />
+                  </IconTile>
+                </Permit>
               </Col>
               <Col>
                 <IconTile onClick={() => console.log("clicked")}>
