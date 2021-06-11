@@ -73,6 +73,7 @@ const Index = (props) => {
                 </Col>
               </Permit>
               <Col>
+              
                 <IconTile onClick={() => console.log("clicked")}>
                   <IconTileHero backgroundUrl={bg} />
                   <IconTileBadge icon={Lock} />

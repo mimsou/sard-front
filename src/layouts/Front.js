@@ -23,7 +23,7 @@ const Front = (props) => {
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin" && AuthService.isLoggedIn()) {
+      if (prop.layout === "/front" && AuthService.isLoggedIn()) {
         return (
           <Route
             path={prop.layout + prop.path}

@@ -1,9 +1,23 @@
 import React, { useState } from "react";
 
-import classnames from "classnames";
+import AuthService from "../../services/auth.service";
 
-import '../../../src/assets/css/index.css';
-import '../../../src/assets/css/base.css';
+import { Filter, List, Archive } from "@lifeomic/chroma-react/icons/lined";
+
+import bg from "../../assets/img/theme/bg.png";
+
+import Permit from "../../permission/PermitComponent";
+
+import FrontHeader from "components/Headers/FrontHeader.js";
+
+import UserReport from "./user-report/UserReport"
+
+import {
+  IconTile,
+  IconTileBadge,
+  IconTileContent,
+  IconTileHero,
+} from "@lifeomic/chroma-react/components/IconTile";
 
 import {
   Button,
@@ -20,30 +34,70 @@ import {
   Col,
 } from "reactstrap";
 
-import FrontHeader from "components/Headers/FrontHeader.js";
+const getUser = () => {
+  AuthService.getCurrentUser();
+};
 
-const FrontIndex = (props) => {
+const Index = (props) => {
+
+  const center = {
+    margin: "auto",
+  
+  };
+
   return (
     <>
-      <Container fluid>
-        <Row className="shopys-special-spacing-top m-5">
-          <Container>
-            <Row className="m-9">
-              <Col md="4">
-                <div className="m-2 enhace-shading wind"></div>
+      <FrontHeader />
+      <Container style={{height:"200%"}} className="mt--7 pb-7" fluid>
+        <Row>
+          <Col md="8" style={{ margin: "auto" }}>
+            <Row>
+              {" "}
+              <Permit perm={"ROLE_ADMIN.manageUser"}>
+                <Col className="mb-4  " >
+                  <IconTile style={center} onClick={() => console.log("clicked")}>
+                    <IconTileHero backgroundUrl={bg} />
+                    <IconTileBadge icon={Filter} />
+                    <IconTileContent
+                      text="Gererateur analytique"
+                      caption="Analyse des données"
+                    />
+                  </IconTile>
+                </Col>
+              </Permit>
+              <Col className="mb-4">
+                <IconTile style={center} onClick={() => console.log("clicked")}>
+                  <IconTileHero backgroundUrl={bg} />
+                  <IconTileBadge icon={Archive} />
+                  <IconTileContent
+                    text="Création de rapports"
+                    caption="Report builder"
+                  />
+                </IconTile>
               </Col>
-              <Col md="4">
-                <div className="m-2 enhace-shading wind"></div>
-              </Col>
-              <Col md="4">
-                <div className="m-2 enhace-shading wind"></div>
+              <Col className="mb-4">
+                <IconTile style={center} onClick={() => console.log("clicked")}>
+                  <IconTileHero backgroundUrl={bg} />
+                  <IconTileBadge icon={List} />
+                  <IconTileContent
+                    text="Mes Rapports"
+                    caption="Suivie des rapports"
+                  />
+                </IconTile>
               </Col>
             </Row>
-          </Container>
+
+            <Row>
+              <Col className="mb-12">
+                <UserReport></UserReport>
+              </Col>
+            </Row>
+ 
+          </Col>
         </Row>
       </Container>
     </>
   );
 };
 
-export default FrontIndex;
+export default Index;
