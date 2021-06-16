@@ -13,7 +13,7 @@ const  FrontHeader = () => {
   return (
    
     <>
-    <div className="header bg-gradient-info pb-9 pt-5 pt-md-8">
+    <div className="header bg-gradient-info pb-5 pt-5 pt-md-8">
       <Container fluid>
         <div className="header-body">
   

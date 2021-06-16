@@ -8,7 +8,7 @@ import "assets/scss/argon-dashboard-react.scss";
 import FrontLayout from "layouts/Front.js";
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
-import { theme } from './theming/theme.ts';
+import { theme } from './theming/theme.js';
 import { ThemeProvider } from "@lifeomic/chroma-react/styles";
 
 

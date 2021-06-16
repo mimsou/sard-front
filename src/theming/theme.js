@@ -6,7 +6,7 @@ import {
   import { Overrides } from '@lifeomic/chroma-react/styles/overrides';
   
  
-  export const overrides = (theme: Theme): Overrides => ({
+  export const overrides = (Theme) => ({
     ChromaButton: {
       root: {
         background: 'red',
