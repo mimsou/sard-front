@@ -10,7 +10,7 @@ import Permit from "../../permission/PermitComponent";
 
 import FrontHeader from "components/Headers/FrontHeader.js";
 
-import UserReport from "./user-report/UserReport"
+import UserReport from "./user-report/UserReport";
 
 import {
   IconTile,
@@ -39,60 +39,70 @@ const getUser = () => {
 };
 
 const Index = (props) => {
-
   const center = {
     margin: "auto",
-  
   };
 
   return (
     <>
       <FrontHeader />
-      <Container style={{height:"200%"}} className="mt--7 pb-7" fluid>
+
+      <Container style={{ height: "200%" }} className="mt--7 pb-7" fluid>
         <Row>
           <Col md="8" style={{ margin: "auto" }}>
-            <Row>
-              {" "}
-              <Permit perm={"ROLE_ADMIN.manageUser"}>
-                <Col className="mb-4  " >
-                  <IconTile style={center} onClick={() => console.log("clicked")}>
+            <div className="d-none d-lg-block">
+              <Row>
+                {" "}
+                <Permit perm={"ROLE_ADMIN.manageUser"}>
+                  <Col className="mb-4  ">
+                    <IconTile
+                      style={center}
+                      onClick={() => console.log("clicked")}
+                    >
+                      <IconTileHero backgroundUrl={bg} />
+                      <IconTileBadge icon={Filter} />
+                      <IconTileContent
+                        text="Gererateur analytique"
+                        caption="Analyse des données"
+                      />
+                    </IconTile>
+                  </Col>
+                </Permit>
+                <Col className="mb-4">
+                  <IconTile
+                    style={center}
+                    onClick={() => console.log("clicked")}
+                  >
                     <IconTileHero backgroundUrl={bg} />
-                    <IconTileBadge icon={Filter} />
+                    <IconTileBadge icon={Archive} />
                     <IconTileContent
-                      text="Gererateur analytique"
-                      caption="Analyse des données"
+                      text="Création de rapports"
+                      caption="Report builder"
                     />
                   </IconTile>
                 </Col>
-              </Permit>
-              <Col className="mb-4">
-                <IconTile style={center} onClick={() => console.log("clicked")}>
-                  <IconTileHero backgroundUrl={bg} />
-                  <IconTileBadge icon={Archive} />
-                  <IconTileContent
-                    text="Création de rapports"
-                    caption="Report builder"
-                  />
-                </IconTile>
-              </Col>
-              <Col className="mb-4">
-                <IconTile style={center} onClick={() => console.log("clicked")}>
-                  <IconTileHero backgroundUrl={bg} />
-                  <IconTileBadge icon={List} />
-                  <IconTileContent
-                    text="Mes Rapports"
-                    caption="Suivie des rapports"
-                  />
-                </IconTile>
-              </Col>
-            </Row>
+                <Col className="mb-4">
+                  <IconTile
+                    style={center}
+                    onClick={() => console.log("clicked")}
+                  >
+                    <IconTileHero backgroundUrl={bg} />
+                    <IconTileBadge icon={List} />
+                    <IconTileContent
+                      text="Mes Rapports"
+                      caption="Suivie des rapports"
+                    />
+                  </IconTile>
+                </Col>
+              </Row>
+            </div>
 
             <Row>
               <Col className="mb-12">
                 <UserReport></UserReport>
               </Col>
             </Row>
- 
+            
           </Col>
         </Row>
       </Container>

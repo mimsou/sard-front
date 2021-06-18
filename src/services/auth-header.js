@@ -1,10 +1,14 @@
 import AuthService from "./auth.service"
 export default function authHeader() {
 
-  const jwt = AuthService.decodeJwt();
+  const decodedjwt = AuthService.decodeJwt();
 
-  if (jwt && jwt.token) {
-    return { Authorization: 'Bearer ' + jwt.token };
+  const jwt  = AuthService.getToken();
+
+  console.log(jwt)
+ 
+  if (jwt) {
+    return { Authorization: 'Bearer ' + jwt };
   }else{
     return "";
   }

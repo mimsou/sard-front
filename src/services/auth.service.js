@@ -18,6 +18,7 @@ class AuthService {
 
   isAdmin() {
     const jwt = this.decodeJwt();
+    console.log("token decoded",jwt);
     return jwt.roles.includes("ROLE_ADMIN");
   }
 
@@ -25,18 +26,28 @@ class AuthService {
     return  jwt(JSON.parse(localStorage.getItem("user")).token);
   }
 
+  getToken() {
+    return  JSON.parse(localStorage.getItem("user")).token;
+  }
+
   login(login, password) {
 
     var formData = new FormData();
 
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const config = { headers: { "Content-Type": "application/json" } };
 
-    formData.append("login", login);
+  const user =   {
+      username:login,
+      password:password
+    }
+
+    formData.append("username", login);
 
     formData.append("password", password);
 
-    return axios.post(API_URL + "login", formData, config).then((response) => {
+    return axios.post(API_URL + "login_check", user, config).then((response) => {
       if (response.data.token) {
+        console.log(response)
         localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;
@@ -61,7 +72,9 @@ class AuthService {
 
   }
 
-  getCurrentUser() {}
+  getCurrentUser() {
+    return 5;
+  }
 }
 
 export default new AuthService();
